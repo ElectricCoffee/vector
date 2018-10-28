@@ -199,48 +199,6 @@ impl ops::Mul<Vector2> for f64 {
     }
 }
 
-impl ops::Mul for Vector2 {
-    type Output = Self;
-
-    /// Multiplies two vectors together component by component
-    /// 
-    /// Example:
-    /// ```
-    /// # use vect::prelude::*;
-    /// let a = Vector2::new(1.0, 2.3);
-    /// let b = Vector2::new(3.0, 2.0);
-    /// let res = a * b;
-    /// let expected = Vector2::new(3.0, 4.6);
-    /// 
-    /// assert_eq!(res, expected);
-    /// ```
-    fn mul(self, other: Self) -> Self {
-        Vector2 {
-            x: self.x * other.x,
-            y: self.y * other.y,
-        }
-    }
-}
-
-impl ops::MulAssign for Vector2 {
-
-    /// Multiplies two vectors together component by component
-    /// 
-    /// Example:
-    /// ```
-    /// # use vect::prelude::*;
-    /// let mut a = Vector2::new(1.0, 2.3);
-    /// let b = Vector2::new(3.0, 2.0);
-    /// a *= b;
-    /// let expected = Vector2::new(3.0, 4.6);
-    /// 
-    /// assert_eq!(a, expected);
-    /// ```
-    fn mul_assign(&mut self, other: Self) {
-        *self = *self * other;
-    }
-}
-
 impl ops::Div<f64> for Vector2 {
     type Output = Self;
 
@@ -336,6 +294,13 @@ impl Vector for Vector2 {
 
     fn dot(&self, other: &Self) -> Self::Scalar {
         self.x * other.x + self.y * other.y
+    }
+
+    fn scale(self, other: Self) -> Self {
+        Vector2 {
+            x: self.x * other.x,
+            y: self.y * other.y,
+        }
     }
 
     fn lerp(self, other: Self, t: Self::Scalar) -> Self {

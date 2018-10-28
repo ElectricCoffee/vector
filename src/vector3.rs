@@ -167,27 +167,6 @@ impl ops::Mul<Vector3> for f64 {
     }
 }
 
-impl ops::Mul for Vector3 {
-    type Output = Self;
-
-    /// Multiplies two vectors together component by component
-    fn mul(self, other: Self) -> Self {
-        Vector3 {
-            x: self.x * other.x,
-            y: self.y * other.y,
-            z: self.z * other.z,
-        }
-    }
-}
-
-impl ops::MulAssign for Vector3 {
-
-    /// Multiplies two vectors together component by component, and assigns the result back into the first vector
-    fn mul_assign(&mut self, other: Self) {
-        *self = *self * other;
-    }
-}
-
 impl ops::Div<f64> for Vector3 {
     type Output = Self;
 
@@ -286,6 +265,14 @@ impl Vector for Vector3 {
 
     fn dot(&self, other: &Self) -> Self::Scalar {
         self.x * other.x + self.y * other.y
+    }
+
+    fn scale(self, other: Self) -> Self {
+        Vector3 {
+            x: self.x * other.x,
+            y: self.y * other.y,
+            z: self.z * other.z,
+        }
     }
 
     fn lerp(self, other: Self, t: Self::Scalar) -> Self {

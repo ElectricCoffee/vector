@@ -7,11 +7,7 @@ pub trait Vector:
     ops::Add 
     + ops::AddAssign 
     + ops::Sub 
-    + ops::SubAssign 
-    + ops::Mul
-    + ops::MulAssign
-    + ops::Div 
-    + ops::DivAssign 
+    + ops::SubAssign
     + PartialEq 
     + PartialOrd
     + Sized 
@@ -43,6 +39,8 @@ pub trait Vector:
 
     /// Returns the dot product between two vectors
     fn dot(&self, other: &Self) -> Self::Scalar;
+
+    fn scale(self, other: Self) -> Self;
 
     /// Performs a linear interpolation between `self` and `other` over `t`.
     /// 
