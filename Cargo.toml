@@ -3,4 +3,13 @@ name = "vect"
 version = "0.1.0"
 authors = ["Niko Lepka <slench102+git@gmail.com>"]
 
+description = "A library for providing vectors for game development that use a Unity-like API."
+repository = "https://github.com/ElectricCoffee/vector.git"
+homepage = "https://github.com/ElectricCoffee/vector"
+
+license = "BSD-3-Clause"
+readme = "README.md"
+
+keywords = ["vector", "vector2", "vector3", "unity", "unity3d"]
+
 [dependencies]
