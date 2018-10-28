@@ -16,7 +16,7 @@ var newVector = Vector2.lerp(start, end, t);
 Should be directly translateable into this API:
 
 ```rust
-use vector::{Vector, Vector2};
+use vect::prelude::*;
 
 let start = Vector2::new(1.0, 2.0);
 let end = Vector2::new(3.0, 8.0);
@@ -25,7 +25,7 @@ let newVector = Vector2::lerp(start, end, t);
 ```
 And due to a quirk in how Rust handles methods, I've gone ahead and implemented all the "static methods" (aka associated functions) as actual methods, so you don't have to think about whether it's one or the other:
 ```rust
-use vector::{Vector, Vector2};
+use vect::prelude::*;
 
 let start = Vector2::new(1.0, 2.0);
 let end = Vector2::new(3.0, 8.0);
