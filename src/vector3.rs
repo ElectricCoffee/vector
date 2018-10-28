@@ -1,6 +1,6 @@
 use std::ops;
 
-use super::Vector;
+use super::{Vector, Vector2};
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub struct Vector3 {
@@ -266,7 +266,7 @@ impl super::Vector for Vector3 {
     /// Example:
     /// 
     /// ```
-    /// # use vector::{Vector, Vector3};
+    /// # use vector::*;
     /// let a = Vector3::new(1.0, 2.0, 0.0);
     /// let n = Vector3::up();
     /// let r = a.reflect(n);
@@ -275,5 +275,17 @@ impl super::Vector for Vector3 {
     /// ```
     fn reflect(self, normal: Self) -> Self {
         -2.0 * self.dot(&normal) * normal + self
+    }
+}
+
+impl From<Vector2> for Vector3 {
+
+    /// Creates a `Vector3` from a `Vector2`, adding a z component of 0
+    fn from(vector: Vector2) -> Vector3 {
+        Vector3 {
+            x: vector.x,
+            y: vector.y,
+            z: 0.0,
+        }
     }
 }

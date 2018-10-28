@@ -1,5 +1,7 @@
 use std::ops;
 
+use super::{Vector, Vector3};
+
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub struct Vector2 {
     pub x: f64,
@@ -165,12 +167,14 @@ impl ops::Div for Vector2 {
 }
 
 impl ops::DivAssign for Vector2 {
+
+    /// Divides two vectors component by component and assigns the result back into the left vector
     fn div_assign(&mut self, other: Self) {
         *self = *self / other;
     }
 }
 
-impl super::Vector for Vector2 {
+impl Vector for Vector2 {
     type Scalar = f64;
 
     fn zero() -> Self {
@@ -247,5 +251,15 @@ impl super::Vector for Vector2 {
     /// ```
     fn reflect(self, normal: Self) -> Self {
         -2.0 * self.dot(&normal) * normal + self
+    }
+}
+
+impl From<Vector3> for Vector2 {
+    /// Turns a `Vector3` into a `Vector2`, discarding the z component.
+    fn from(vector: Vector3) -> Vector2 {
+        Vector2 {
+            x: vector.x,
+            y: vector.y,
+        }
     }
 }
