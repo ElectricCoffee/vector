@@ -68,6 +68,26 @@ impl Vector3 {
             .. Vector3::zero()
         }
     }
+
+    /// Defines the cross product between two vectors
+    /// 
+    /// Example:
+    /// ```
+    /// # use vect::prelude::*;
+    /// let a = Vector3::new(3.0, -3.0, 1.0);
+    /// let b = Vector3::new(4.0, 9.0, 2.0);
+    /// let res = a.cross(b);
+    /// let expected = Vector3::new(-15.0, -2.0, 39.0);
+    /// 
+    /// assert_eq!(res, expected);
+    /// ```
+    pub fn cross(self, other: Self) -> Self {
+        Vector3 {
+            x: self.y * other.z - self.z * other.y,
+            y: self.z * other.x - self.x * other.z,
+            z: self.x * other.y - self.y * other.x,
+        }
+    }
 }
 
 impl ops::Add for Vector3 {
