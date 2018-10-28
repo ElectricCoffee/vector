@@ -231,26 +231,6 @@ impl ops::Div<Vector2> for f64 {
     }
 }
 
-impl ops::Div for Vector2 {
-    type Output = Vector2;
-
-    /// Divides two vectors component by component
-    fn div(self, other: Self) -> Self {
-        Vector2 {
-            x: self.x / other.x,
-            y: self.y / other.y,
-        }
-    }
-}
-
-impl ops::DivAssign for Vector2 {
-
-    /// Divides two vectors component by component and assigns the result back into the left vector
-    fn div_assign(&mut self, other: Self) {
-        *self = *self / other;
-    }
-}
-
 impl Vector for Vector2 {
     type Scalar = f64;
 
