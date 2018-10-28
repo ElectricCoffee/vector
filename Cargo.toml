@@ -1,6 +1,6 @@
 [package]
 name = "vect"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Niko Lepka <slench102+git@gmail.com>"]
 
 description = "A library for providing vectors for game development that use a Unity-like API."

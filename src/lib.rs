@@ -1,4 +1,4 @@
-//! # vector
+//! # vect
 //! 
 //! Vector is a crate for providing simple and easy to use vectors for use in game development in the style of those found in the Unity game engine.
 //! 
