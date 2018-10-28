@@ -1,3 +1,8 @@
+//! Standard implementation of a 3D Vector.
+//! 
+//! This particular implementation uses 64-bit floating point numbers as its scalar components. 
+//! It does so to ease compatibility with [piston.rs](https://www.piston.rs/), as that is what it uses by default for its scalars.
+
 use std::ops;
 
 use super::prelude::{Vector, Vector2};
@@ -68,6 +73,7 @@ impl Vector3 {
 impl ops::Add for Vector3 {
     type Output = Self;
 
+    /// Adds two vectors together
     fn add(self, other: Self) -> Self {
         Vector3 {
             x: self.x + other.x,
@@ -78,6 +84,8 @@ impl ops::Add for Vector3 {
 }
 
 impl ops::AddAssign for Vector3 {
+
+    /// Adds two vectors together, and assigns the result into the first vector
     fn add_assign(&mut self, other: Self) {
         *self = *self + other;
     }
@@ -86,6 +94,7 @@ impl ops::AddAssign for Vector3 {
 impl ops::Sub for Vector3 {
     type Output = Self;
 
+    /// Subtracts two vectors from each other
     fn sub(self, other: Self) -> Self {
         Vector3 {
             x: self.x - other.x,
@@ -96,6 +105,8 @@ impl ops::Sub for Vector3 {
 }
 
 impl ops::SubAssign for Vector3 {
+
+    /// Subtracts two vectors from each other, and assigns the result into the first vector
     fn sub_assign(&mut self, other: Self) {
         *self = *self - other;
     }
@@ -104,6 +115,7 @@ impl ops::SubAssign for Vector3 {
 impl ops::Mul<f64> for Vector3 {
     type Output = Self;
 
+    /// Multiplies a vector with a scalar
     fn mul(self, rhs: f64) -> Self {
         Vector3 {
             x: self.x * rhs,
@@ -114,12 +126,16 @@ impl ops::Mul<f64> for Vector3 {
 }
 
 impl ops::MulAssign<f64> for Vector3 {
+
+    /// Multiplies a vector with a scalar, and assigns the result back into the vector
     fn mul_assign(&mut self, other: f64) {
         *self = *self * other;
     }
 }
 
 impl ops::Mul<Vector3> for f64 {
+
+    /// Multiplies a scalar with a vector
     type Output = Vector3;
 
     fn mul(self, rhs: Vector3) -> Vector3 {
@@ -134,6 +150,7 @@ impl ops::Mul<Vector3> for f64 {
 impl ops::Mul for Vector3 {
     type Output = Self;
 
+    /// Multiplies two vectors together component by component
     fn mul(self, other: Self) -> Self {
         Vector3 {
             x: self.x * other.x,
@@ -144,6 +161,8 @@ impl ops::Mul for Vector3 {
 }
 
 impl ops::MulAssign for Vector3 {
+
+    /// Multiplies two vectors together component by component, and assigns the result back into the first vector
     fn mul_assign(&mut self, other: Self) {
         *self = *self * other;
     }
@@ -152,6 +171,7 @@ impl ops::MulAssign for Vector3 {
 impl ops::Div<f64> for Vector3 {
     type Output = Self;
 
+    /// Divides a vector by a scalar
     fn div(self, other: f64) -> Self {
         Vector3 {
             x: self.x / other,
@@ -162,6 +182,7 @@ impl ops::Div<f64> for Vector3 {
 }
 
 impl ops::DivAssign<f64> for Vector3 {
+    /// Divides a vector by a scalar, and assigns the result back into the vector
     fn div_assign(&mut self, other: f64) {
         *self = *self / other;
     }
@@ -170,6 +191,7 @@ impl ops::DivAssign<f64> for Vector3 {
 impl ops::Div<Vector3> for f64 {
     type Output = Vector3;
 
+    /// Divides a scalar by a vector
     fn div(self, other: Vector3) -> Vector3 {
         Vector3 {
             x: self / other.x,
@@ -182,6 +204,7 @@ impl ops::Div<Vector3> for f64 {
 impl ops::Div for Vector3 {
     type Output = Vector3;
 
+    /// Divides two vectors component by component
     fn div(self, other: Self) -> Self {
         Vector3 {
             x: self.x / other.x,
@@ -192,6 +215,8 @@ impl ops::Div for Vector3 {
 }
 
 impl ops::DivAssign for Vector3 {
+
+    /// Divides two vectors component by component, and assigns the result to the first vector
     fn div_assign(&mut self, other: Self) {
         *self = *self / other;
     }

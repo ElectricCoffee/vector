@@ -1,5 +1,6 @@
-use std::ops;
+//! Trait which encompasses the standard feature set of a vector.
 
+use std::ops;
 
 /// Base Vector trait.
 pub trait Vector: 
@@ -15,6 +16,8 @@ pub trait Vector:
     + PartialOrd
     + Sized 
 {
+    // Associated type, which sets the scalar type of a given implementation.
+    // A scalar is just a regular non-vector number.
     type Scalar;
 
     /// The Zero vector

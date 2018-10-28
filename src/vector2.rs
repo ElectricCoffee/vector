@@ -1,6 +1,11 @@
-use std::ops;
+//! Standard implementation of a 2D Vector.
+//! 
+//! This particular implementation uses 64-bit floating point numbers as its scalar components. 
+//! It does so to ease compatibility with [piston.rs](https://www.piston.rs/), as that is what it uses by default for its scalars.
 
+use std::ops;
 use super::prelude::{Vector, Vector3};
+
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub struct Vector2 {
