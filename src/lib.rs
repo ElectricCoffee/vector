@@ -78,11 +78,3 @@ pub trait Vector:
     /// Reflects the vector along the `normal` vector.
     fn reflect(self, normal: Self) -> Self;
 }
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
