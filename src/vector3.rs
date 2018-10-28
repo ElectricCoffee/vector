@@ -88,6 +88,13 @@ impl Vector3 {
             z: self.x * other.y - self.y * other.x,
         }
     }
+
+    /// Returns the distance between two vectors.
+    /// 
+    /// `a.distance(b)` is the same as `(a - b).magnitude()`.
+    pub fn distance(&self, other: &Self) -> f64 {
+        (*self - *other).magnitude()
+    }
 }
 
 impl ops::Add for Vector3 {
