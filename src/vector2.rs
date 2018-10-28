@@ -51,6 +51,18 @@ impl Vector2 {
 impl ops::Add for Vector2 {
     type Output = Self;
 
+    /// Adds two vectors together.
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let a = Vector2::new(1.0, 2.0);
+    /// let b = Vector2::new(3.0, 4.0);
+    /// let res = a + b;
+    /// let expected = Vector2::new(4.0, 6.0);
+    /// 
+    /// assert_eq!(res, expected);
+    /// ```
     fn add(self, other: Self) -> Self {
         Vector2 {
             x: self.x + other.x,
@@ -60,6 +72,19 @@ impl ops::Add for Vector2 {
 }
 
 impl ops::AddAssign for Vector2 {
+
+    /// Adds two vectors together and assigns the result back to the first.
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let mut a = Vector2::new(1.0, 2.0);
+    /// let b = Vector2::new(3.0, 4.0);
+    /// a += b;
+    /// let expected = Vector2::new(4.0, 6.0);
+    /// 
+    /// assert_eq!(a, expected);
+    /// ```
     fn add_assign(&mut self, other: Self) {
         *self = *self + other;
     }
@@ -68,6 +93,18 @@ impl ops::AddAssign for Vector2 {
 impl ops::Sub for Vector2 {
     type Output = Self;
 
+    /// Subtracts two vectors from each other.
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let a = Vector2::new(5.0, 8.0);
+    /// let b = Vector2::new(6.0, 4.0);
+    /// let res = a - b;
+    /// let expected = Vector2::new(-1.0, 4.0);
+    /// 
+    /// assert_eq!(res, expected);
+    /// ```
     fn sub(self, other: Self) -> Self {
         Vector2 {
             x: self.x - other.x,
@@ -77,6 +114,19 @@ impl ops::Sub for Vector2 {
 }
 
 impl ops::SubAssign for Vector2 {
+
+    /// Subtracts two vectors from each other and assigns the result back to the first.
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let mut a = Vector2::new(5.0, 8.0);
+    /// let b = Vector2::new(6.0, 4.0);
+    /// a -= b;
+    /// let expected = Vector2::new(-1.0, 4.0);
+    /// 
+    /// assert_eq!(a, expected);
+    /// ```
     fn sub_assign(&mut self, other: Self) {
         *self = *self - other;
     }
@@ -85,6 +135,17 @@ impl ops::SubAssign for Vector2 {
 impl ops::Mul<f64> for Vector2 {
     type Output = Self;
 
+    /// Multiplies the vector with some scalar
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let a = Vector2::new(3.0, 4.0);
+    /// let res = a * 3.0;
+    /// let expected = Vector2::new(9.0, 12.0);
+    /// 
+    /// assert_eq!(res, expected);
+    /// ```
     fn mul(self, rhs: f64) -> Self {
         Vector2 {
             x: self.x * rhs,
@@ -94,6 +155,18 @@ impl ops::Mul<f64> for Vector2 {
 }
 
 impl ops::MulAssign<f64> for Vector2 {
+
+    /// Multiplies the vector with some scalar and assigns the result back onto the vector
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let mut a = Vector2::new(3.0, 4.0);
+    /// a *= 3.0;
+    /// let expected = Vector2::new(9.0, 12.0);
+    /// 
+    /// assert_eq!(a, expected);
+    /// ```
     fn mul_assign(&mut self, other: f64) {
         *self = *self * other;
     }
@@ -102,6 +175,17 @@ impl ops::MulAssign<f64> for Vector2 {
 impl ops::Mul<Vector2> for f64 {
     type Output = Vector2;
 
+    /// Multiplies a scalar with some vector
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let a = Vector2::new(2.5, 5.0);
+    /// let res = 2.0 * a;
+    /// let expected = Vector2::new(5.0, 10.0);
+    /// 
+    /// assert_eq!(res, expected);
+    /// ```
     fn mul(self, rhs: Vector2) -> Vector2 {
         Vector2 {
             x: self * rhs.x,
@@ -113,6 +197,18 @@ impl ops::Mul<Vector2> for f64 {
 impl ops::Mul for Vector2 {
     type Output = Self;
 
+    /// Multiplies two vectors together component by component
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let a = Vector2::new(1.0, 2.3);
+    /// let b = Vector2::new(3.0, 2.0);
+    /// let res = a * b;
+    /// let expected = Vector2::new(3.0, 4.6);
+    /// 
+    /// assert_eq!(res, expected);
+    /// ```
     fn mul(self, other: Self) -> Self {
         Vector2 {
             x: self.x * other.x,
@@ -122,6 +218,19 @@ impl ops::Mul for Vector2 {
 }
 
 impl ops::MulAssign for Vector2 {
+
+    /// Multiplies two vectors together component by component
+    /// 
+    /// Example:
+    /// ```
+    /// # use vector::*;
+    /// let mut a = Vector2::new(1.0, 2.3);
+    /// let b = Vector2::new(3.0, 2.0);
+    /// a *= b;
+    /// let expected = Vector2::new(3.0, 4.6);
+    /// 
+    /// assert_eq!(a, expected);
+    /// ```
     fn mul_assign(&mut self, other: Self) {
         *self = *self * other;
     }
@@ -130,6 +239,7 @@ impl ops::MulAssign for Vector2 {
 impl ops::Div<f64> for Vector2 {
     type Output = Self;
 
+    /// Divides the vector with some scalar
     fn div(self, other: f64) -> Self {
         Vector2 {
             x: self.x / other,
@@ -139,6 +249,8 @@ impl ops::Div<f64> for Vector2 {
 }
 
 impl ops::DivAssign<f64> for Vector2 {
+
+    /// Divides the vector with some scalar and assigns the result back into the vector
     fn div_assign(&mut self, other: f64) {
         *self = *self / other;
     }
@@ -147,6 +259,7 @@ impl ops::DivAssign<f64> for Vector2 {
 impl ops::Div<Vector2> for f64 {
     type Output = Vector2;
 
+    /// Divides a scalar with some vector
     fn div(self, other: Vector2) -> Vector2 {
         Vector2 {
             x: self / other.x,
@@ -158,6 +271,7 @@ impl ops::Div<Vector2> for f64 {
 impl ops::Div for Vector2 {
     type Output = Vector2;
 
+    /// Divides two vectors component by component
     fn div(self, other: Self) -> Self {
         Vector2 {
             x: self.x / other.x,
