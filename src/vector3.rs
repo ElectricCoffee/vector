@@ -1,6 +1,6 @@
 use std::ops;
 
-use super::{Vector, Vector2};
+use super::prelude::{Vector, Vector2};
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub struct Vector3 {
@@ -197,7 +197,7 @@ impl ops::DivAssign for Vector3 {
     }
 }
 
-impl super::Vector for Vector3 {
+impl Vector for Vector3 {
     type Scalar = f64;
 
     fn zero() -> Self {
@@ -266,7 +266,7 @@ impl super::Vector for Vector3 {
     /// Example:
     /// 
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let a = Vector3::new(1.0, 2.0, 0.0);
     /// let n = Vector3::up();
     /// let r = a.reflect(n);

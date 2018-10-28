@@ -1,5 +1,5 @@
 [package]
-name = "vector"
+name = "vect"
 version = "0.1.0"
 authors = ["Niko Lepka <slench102+git@gmail.com>"]
 

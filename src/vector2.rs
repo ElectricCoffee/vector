@@ -1,6 +1,6 @@
 use std::ops;
 
-use super::{Vector, Vector3};
+use super::prelude::{Vector, Vector3};
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub struct Vector2 {
@@ -55,7 +55,7 @@ impl ops::Add for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let a = Vector2::new(1.0, 2.0);
     /// let b = Vector2::new(3.0, 4.0);
     /// let res = a + b;
@@ -77,7 +77,7 @@ impl ops::AddAssign for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let mut a = Vector2::new(1.0, 2.0);
     /// let b = Vector2::new(3.0, 4.0);
     /// a += b;
@@ -97,7 +97,7 @@ impl ops::Sub for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let a = Vector2::new(5.0, 8.0);
     /// let b = Vector2::new(6.0, 4.0);
     /// let res = a - b;
@@ -119,7 +119,7 @@ impl ops::SubAssign for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let mut a = Vector2::new(5.0, 8.0);
     /// let b = Vector2::new(6.0, 4.0);
     /// a -= b;
@@ -139,7 +139,7 @@ impl ops::Mul<f64> for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let a = Vector2::new(3.0, 4.0);
     /// let res = a * 3.0;
     /// let expected = Vector2::new(9.0, 12.0);
@@ -160,7 +160,7 @@ impl ops::MulAssign<f64> for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let mut a = Vector2::new(3.0, 4.0);
     /// a *= 3.0;
     /// let expected = Vector2::new(9.0, 12.0);
@@ -179,7 +179,7 @@ impl ops::Mul<Vector2> for f64 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let a = Vector2::new(2.5, 5.0);
     /// let res = 2.0 * a;
     /// let expected = Vector2::new(5.0, 10.0);
@@ -201,7 +201,7 @@ impl ops::Mul for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let a = Vector2::new(1.0, 2.3);
     /// let b = Vector2::new(3.0, 2.0);
     /// let res = a * b;
@@ -223,7 +223,7 @@ impl ops::MulAssign for Vector2 {
     /// 
     /// Example:
     /// ```
-    /// # use vector::*;
+    /// # use vect::prelude::*;
     /// let mut a = Vector2::new(1.0, 2.3);
     /// let b = Vector2::new(3.0, 2.0);
     /// a *= b;
@@ -356,7 +356,7 @@ impl Vector for Vector2 {
     /// Example:
     /// 
     /// ```
-    /// # use vector::{Vector, vector2::Vector2};
+    /// # use vect::prelude::*;
     /// let a = Vector2::new(1.0, 2.0);
     /// let n = Vector2::up();
     /// let r = a.reflect(n);
