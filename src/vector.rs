@@ -22,6 +22,9 @@ pub trait Vector:
     /// Gets the magnitude (length) of the vector
     fn magnitude(&self) -> Self::Scalar;
 
+    /// Gets the distance between two vectors
+    fn distance(&self, other: &Self) -> Self::Scalar;
+
     /// Returns a vector with the same angle, but with a magnitude of 1
     fn normalized(self) -> Self;
 

@@ -222,6 +222,10 @@ impl Vector for Vector3 {
         self.sqr_magnitude().sqrt()
     }
 
+    fn distance(&self, other: &Self) -> f64 {
+        self.distance(other)
+    }
+
     fn normalized(self) -> Self {
         let mag = self.magnitude();
         self / mag

@@ -245,6 +245,10 @@ impl Vector for Vector2 {
         self.sqr_magnitude().sqrt()
     }
 
+    fn distance(&self, other: &Self) -> Self::Scalar {
+        (*self - *other).magnitude()
+    }
+
     fn normalized(self) -> Self {
         let mag = self.magnitude();
         self / mag
@@ -298,7 +302,7 @@ impl Vector for Vector2 {
     }
 
     fn move_towards(self, other: Self, max_distance_delta: Self::Scalar) -> Self {
-        let distance = (self - other).magnitude();
+        let distance = self.distance(&other);
         let fraction = max_distance_delta / distance;
         self.lerp_unclamped(other, fraction)
     }
