@@ -37,9 +37,10 @@ pub trait Vector:
     /// Returns a new vector with a magnitude clamped to `max_len`.
     fn clamp_magnitude(self, max_len: Self::Scalar) -> Self;
 
-    /// Returns the dot product between two vectors
+    /// Returns the dot product between two vectors.
     fn dot(&self, other: &Self) -> Self::Scalar;
 
+    /// Scales one vector by another.
     fn scale(self, other: Self) -> Self;
 
     /// Performs a linear interpolation between `self` and `other` over `t`.
@@ -68,9 +69,9 @@ pub trait Vector:
         if self <= other { self } else { other }
     }
 
-    // /// Essentially the same as Vector::lerp, but the function will instead ensure the distance never exceeds `max_distance_delta`.
-    // /// Negative values of `max_distance_delta` pushes the vector away from `target`.
-    // fn move_towards(self, target: Self, max_distance_delta: Self::Scalar) -> Self;
+    /// Essentially the same as Vector::lerp, but the function will instead ensure the distance never exceeds `max_distance_delta`.
+    /// Negative values of `max_distance_delta` pushes the vector away from `target`.
+    fn move_towards(self, target: Self, max_distance_delta: Self::Scalar) -> Self;
 
     /// Reflects the vector along the `normal` vector.
     fn reflect(self, normal: Self) -> Self;

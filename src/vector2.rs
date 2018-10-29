@@ -297,6 +297,12 @@ impl Vector for Vector2 {
         (1.0 - t) * self + t * other
     }
 
+    fn move_towards(self, other: Self, max_distance_delta: Self::Scalar) -> Self {
+        let distance = (self - other).magnitude();
+        let fraction = max_distance_delta / distance;
+        self.lerp_unclamped(other, fraction)
+    }
+
     // fn move_towards(self, other: Self, max_distance_delta: Self::Scalar) -> Self {
     //     unimplemented!("Unsure how this is supposed to be implemented");
     // }

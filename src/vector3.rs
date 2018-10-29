@@ -253,6 +253,7 @@ impl Vector for Vector3 {
         self.x * other.x + self.y * other.y
     }
 
+    /// Scales one vector by another by multiplying their components
     fn scale(self, other: Self) -> Self {
         Vector3 {
             x: self.x * other.x,
@@ -273,6 +274,12 @@ impl Vector for Vector3 {
 
     fn lerp_unclamped(self, other: Self, t: Self::Scalar) -> Self {
         (1.0 - t) * self + t * other
+    }
+
+    fn move_towards(self, other: Self, max_distance_delta: Self::Scalar) -> Self {
+        let distance = self.distance(&other);
+        let fraction = max_distance_delta / distance;
+        self.lerp_unclamped(other, fraction)
     }
 
     // fn move_towards(self, other: Self, max_distance_delta: Self::Scalar) -> Self {
