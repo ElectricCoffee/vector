@@ -96,17 +96,25 @@ impl Vector3 {
         (*self - *other).magnitude()
     }
 
-    /// Returns a new vector that is spherically lerped with relation to t
+    /// Returns a new vector that is spherically lerped with relation to t.
+    /// Where t is clamped in the range [0, 1]
     /// 
-    /// See [Wikipedia](https://en.wikipedia.org/wiki/Slerp#Geometric_Slerp) for the source.
+    /// See [Wikipedia](https://en.wikipedia.org/wiki/Slerp#Geometric_Slerp) for the method in which this was calculated.
     pub fn slerp(self, other: Self, t: f64) -> Self {
         // ensure t stays within bounds
         if t <= 0.0 {
-            return self;
+            self
         } else if t >= 1.0 {
-            return other;
+            other
+        } else {
+            self.slerp_unclamped(other, t)
         }
+    }
 
+    /// Unclamped version of slerp.
+    /// Doesn't provide any guarantees on the input
+    pub fn slerp_unclamped(self, other: Self, t: f64) -> Self {
+        // if cos Ω = p1 dot p2; that must mean Ω = acos (p1 dot p2)
         let omega = self.dot(&other).acos();
         let lhs = (((1.0 - t) * omega).sin() * self) / omega.sin();
         let rhs = ((t * omega).sin() * other) / omega.sin();
