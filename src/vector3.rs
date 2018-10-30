@@ -329,10 +329,6 @@ impl Vector for Vector3 {
         self.lerp_unclamped(other, fraction)
     }
 
-    // fn move_towards(self, other: Self, max_distance_delta: Self::Scalar) -> Self {
-    //     unimplemented!("Unsure how this is supposed to be implemented");
-    // }
-
     /// Reflects the vector along the `normal` vector.
     ///
     /// Example:
