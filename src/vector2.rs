@@ -357,3 +357,27 @@ impl From<Vector3> for Vector2 {
         }
     }
 }
+
+impl From<(f64, f64)> for Vector2 {
+    fn from((x, y): (f64, f64)) -> Vector2 {
+        Vector2 { x, y }
+    }
+}
+
+impl From<Vector2> for (f64, f64) {
+    fn from(Vector2 {x, y}: Vector2) -> (f64, f64) {
+        (x, y)
+    }
+}
+
+impl From<[f64; 2]> for Vector2 {
+    fn from([x, y]: [f64; 2]) -> Vector2 {
+        Vector2 { x, y }
+    }
+}
+
+impl From<Vector2> for [f64; 2] {
+    fn from(Vector2 {x, y}: Vector2) -> [f64; 2] {
+        [x, y]
+    }
+}
