@@ -37,6 +37,9 @@ pub trait Vector:
     /// Returns the angle between two vectors
     fn angle(&self, other: &Self) -> Self::Scalar;
 
+    /// Projects the vector onto the other vector
+    fn project(self, other: Self) -> Self;
+
     /// Returns a new vector with a magnitude clamped to `max_len`.
     fn clamp_magnitude(self, max_len: Self::Scalar) -> Self;
 

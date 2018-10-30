@@ -284,6 +284,10 @@ impl Vector for Vector3 {
         (dot / mag).acos()
     }
 
+    fn project(self, other: Self) -> Self {
+        (self.dot(&other) / other.dot(&other)) * other
+    }
+
     fn clamp_magnitude(self, max_len: Self::Scalar) -> Self {
         if self.magnitude() > max_len {
             self / max_len
