@@ -95,6 +95,24 @@ impl Vector3 {
     pub fn distance(&self, other: &Self) -> f64 {
         (*self - *other).magnitude()
     }
+
+    /// Returns a new vector that is spherically lerped with relation to t
+    /// 
+    /// See [Wikipedia](https://en.wikipedia.org/wiki/Slerp#Geometric_Slerp) for the source.
+    pub fn slerp(self, other: Self, t: f64) -> Self {
+        // ensure t stays within bounds
+        if t <= 0.0 {
+            return self;
+        } else if t >= 1.0 {
+            return other;
+        }
+
+        let omega = self.dot(&other).acos();
+        let lhs = (((1.0 - t) * omega).sin() * self) / omega.sin();
+        let rhs = ((t * omega).sin() * other) / omega.sin();
+
+        lhs + rhs
+    }
 }
 
 impl ops::Add for Vector3 {
