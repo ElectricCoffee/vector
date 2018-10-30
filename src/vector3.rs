@@ -1,6 +1,6 @@
 //! Standard implementation of a 3D Vector.
-//! 
-//! This particular implementation uses 64-bit floating point numbers as its scalar components. 
+//!
+//! This particular implementation uses 64-bit floating point numbers as its scalar components.
 //! It does so to ease compatibility with [piston.rs](https://www.piston.rs/), as that is what it uses by default for its scalars.
 
 use std::ops;
@@ -15,7 +15,6 @@ pub struct Vector3 {
 }
 
 impl Vector3 {
-
     /// Creates a new `Vector3`
     pub fn new(x: f64, y: f64, z: f64) -> Self {
         Vector3 { x, y, z }
@@ -25,7 +24,7 @@ impl Vector3 {
     pub fn up() -> Self {
         Vector3 {
             y: 1.0,
-            .. Vector3::zero()
+            ..Vector3::zero()
         }
     }
 
@@ -33,7 +32,7 @@ impl Vector3 {
     pub fn down() -> Self {
         Vector3 {
             y: -1.0,
-            .. Vector3::zero()
+            ..Vector3::zero()
         }
     }
 
@@ -41,7 +40,7 @@ impl Vector3 {
     pub fn left() -> Self {
         Vector3 {
             x: -1.0,
-            .. Vector3::zero()
+            ..Vector3::zero()
         }
     }
 
@@ -49,7 +48,7 @@ impl Vector3 {
     pub fn right() -> Self {
         Vector3 {
             x: 1.0,
-            .. Vector3::zero()
+            ..Vector3::zero()
         }
     }
 
@@ -57,7 +56,7 @@ impl Vector3 {
     pub fn forward() -> Self {
         Vector3 {
             z: 1.0,
-            .. Vector3::zero()
+            ..Vector3::zero()
         }
     }
 
@@ -65,12 +64,30 @@ impl Vector3 {
     pub fn back() -> Self {
         Vector3 {
             z: -1.0,
-            .. Vector3::zero()
+            ..Vector3::zero()
+        }
+    }
+
+    /// Creates a vector with x, y, and z at +∞
+    pub fn positive_infinity() -> Self {
+        Vector3 {
+            x: std::f64::INFINITY,
+            y: std::f64::INFINITY,
+            z: std::f64::INFINITY,
+        }
+    }
+
+    /// Creates a vector with x, y, and z at -∞
+    pub fn negative_infinity() -> Self {
+        Vector3 {
+            x: std::f64::NEG_INFINITY,
+            y: std::f64::NEG_INFINITY,
+            z: std::f64::NEG_INFINITY,
         }
     }
 
     /// Defines the cross product between two vectors
-    /// 
+    ///
     /// Example:
     /// ```
     /// # use vect::prelude::*;
@@ -78,7 +95,7 @@ impl Vector3 {
     /// let b = Vector3::new(4.0, 9.0, 2.0);
     /// let res = a.cross(b);
     /// let expected = Vector3::new(-15.0, -2.0, 39.0);
-    /// 
+    ///
     /// assert_eq!(res, expected);
     /// ```
     pub fn cross(self, other: Self) -> Self {
@@ -90,7 +107,7 @@ impl Vector3 {
     }
 
     /// Returns the distance between two vectors.
-    /// 
+    ///
     /// `a.distance(b)` is the same as `(a - b).magnitude()`.
     pub fn distance(&self, other: &Self) -> f64 {
         (*self - *other).magnitude()
@@ -98,7 +115,7 @@ impl Vector3 {
 
     /// Returns a new vector that is spherically lerped with relation to t.
     /// Where t is clamped in the range [0, 1]
-    /// 
+    ///
     /// See [Wikipedia](https://en.wikipedia.org/wiki/Slerp#Geometric_Slerp) for the method in which this was calculated.
     pub fn slerp(self, other: Self, t: f64) -> Self {
         // ensure t stays within bounds
@@ -137,7 +154,6 @@ impl ops::Add for Vector3 {
 }
 
 impl ops::AddAssign for Vector3 {
-
     /// Adds two vectors together, and assigns the result into the first vector
     fn add_assign(&mut self, other: Self) {
         *self = *self + other;
@@ -158,7 +174,6 @@ impl ops::Sub for Vector3 {
 }
 
 impl ops::SubAssign for Vector3 {
-
     /// Subtracts two vectors from each other, and assigns the result into the first vector
     fn sub_assign(&mut self, other: Self) {
         *self = *self - other;
@@ -179,7 +194,6 @@ impl ops::Mul<f64> for Vector3 {
 }
 
 impl ops::MulAssign<f64> for Vector3 {
-
     /// Multiplies a vector with a scalar, and assigns the result back into the vector
     fn mul_assign(&mut self, other: f64) {
         *self = *self * other;
@@ -187,7 +201,6 @@ impl ops::MulAssign<f64> for Vector3 {
 }
 
 impl ops::Mul<Vector3> for f64 {
-
     /// Multiplies a scalar with a vector
     type Output = Vector3;
 
@@ -317,15 +330,15 @@ impl Vector for Vector3 {
     // }
 
     /// Reflects the vector along the `normal` vector.
-    /// 
+    ///
     /// Example:
-    /// 
+    ///
     /// ```
     /// # use vect::prelude::*;
     /// let a = Vector3::new(1.0, 2.0, 0.0);
     /// let n = Vector3::up();
     /// let r = a.reflect(n);
-    /// 
+    ///
     /// assert_eq!(r, Vector3::new(1.0, -2.0, 0.0));
     /// ```
     fn reflect(self, normal: Self) -> Self {
@@ -334,7 +347,6 @@ impl Vector for Vector3 {
 }
 
 impl From<Vector2> for Vector3 {
-
     /// Creates a `Vector3` from a `Vector2`, adding a z component of 0
     fn from(vector: Vector2) -> Vector3 {
         Vector3 {

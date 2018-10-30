@@ -51,6 +51,22 @@ impl Vector2 {
             y: 0.0,
         }
     }
+
+    /// Creates a vector with x and y at +∞
+    pub fn positive_infinity() -> Self {
+        Vector2 {
+            x: std::f64::INFINITY,
+            y: std::f64::INFINITY,
+        }
+    }
+
+    /// Creates a vector with x and y at -∞
+    pub fn negative_infinity() -> Self {
+        Vector2 {
+            x: std::f64::NEG_INFINITY,
+            y: std::f64::NEG_INFINITY,
+        }
+    }
 }
 
 impl ops::Add for Vector2 {
